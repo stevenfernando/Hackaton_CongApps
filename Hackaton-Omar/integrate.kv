@@ -1,0 +1,41 @@
+<MainWindow>:
+    name: "home"
+
+    FloatLayout:
+        Button:
+            pos_hint: {"x":0.4, "y":0.05}
+            text: "Go!"
+            on_release:
+                root.manager.reset()
+                root.manager.start()
+                root.manager.current = 'low'
+
+<SecondWindow>:
+    name: 'low'
+
+    FloatLayout:
+        Label:
+            id: count_down1
+            text: str(round(root.manager.timer.a, 1))
+            pos_hint: {"x": 0.4, "y": 0.55}
+        Button:
+            background_color: 0.5,0.1,1,1
+            text: 'next'
+            pos_hint: {"x":0.4, "y":0.05}
+            on_release:
+                root.manager.current = "medium"
+
+<ThirdWindow>:
+    name: "medium"
+
+    FloatLayout:
+        Label:
+            id: count_down2
+            text: str(round(root.manager.timer.a, 1))
+            pos_hint: {"x": 0.4, "y": 0.55}
+        Button:
+            background_color: 0.5,0.1,1,1
+            text: 'Cancel'
+            pos_hint: {"x":0.4, "y":0.05}
+            on_release:
+                root.manager.current = "home"
